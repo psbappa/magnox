@@ -1,6 +1,5 @@
 <?php
 require_once 'config/config.php';
-$errors = ['name' => '', 'email' => '', 'phone' => ''];
 
 $user = '';
 if(isset($_SESSION['user'])){
@@ -9,9 +8,10 @@ if(isset($_SESSION['user'])){
     header('location: login.php');
 }
 
+$errors = ['name' => '', 'email' => '', 'phone' => ''];
 $name = $email = $phone = '';
 
-// Get the user from the users table
+// Get the todo from the users table
 $stmt = $conn->prepare('SELECT * FROM todo WHERE id = ?');
 $stmt->execute([$_GET['id']]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);

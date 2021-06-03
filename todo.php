@@ -81,34 +81,48 @@
     <div class="row">
         <div class="col-md-5 mx-auto">
             <form name="myForm" action="<?php echo $_SERVER['PHP_SELF'] ?>" onsubmit = "return(ValidationEvent());" method="POST">
-                <h1>Insert ToDo by - <?php echo $result['name'];?></h1>
-                <div class="form-group">
-                    <input type="hidden" name="u_id" id="u_id" value="<?php echo $result['id'] ?>" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" id="name" value="<?php //echo $name ?>" class="form-control">
-                    <div class="text-danger">
-                        <?php //echo $errors['name']; ?>
+                
+                <h1>Insert ToDo by - <?php 
+                    if(isset($result['name'])) {
+                        echo $result['name'];
+                    } else {
+                        echo 'User Deleted';
+                    }
+                ?></h1>
+
+                <?php
+                if(isset($result['name'])) { ?>
+                    <div class="form-group">
+                        <input type="hidden" name="u_id" id="u_id" value="<?php echo $result['id'] ?>" class="form-control">
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="text" name="email" id="email" value="<?php //echo $email ?>" class="form-control">
-                    <div class="text-danger">
-                        <?php //echo $errors['email']; ?>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" value="<?php //echo $name ?>" class="form-control">
+                        <div class="text-danger">
+                            <?php //echo $errors['name']; ?>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="email">Phone</label>
-                    <input type="text" name="phone" id="phone" value="<?php //echo $phone ?>" class="form-control">
-                    <div class="text-danger">
-                        <?php //echo $errors['phone']; ?>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="email" value="<?php //echo $email ?>" class="form-control">
+                        <div class="text-danger">
+                            <?php //echo $errors['email']; ?>
+                        </div>
                     </div>
-                </div>
-                <div class="d-grid">
-                    <button type="submit" class="btn btn-info" name="todo_insert">ToDo</button>
-                </div>
+                    <div class="form-group">
+                        <label for="email">Phone</label>
+                        <input type="text" name="phone" id="phone" value="<?php //echo $phone ?>" class="form-control">
+                        <div class="text-danger">
+                            <?php //echo $errors['phone']; ?>
+                        </div>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-info" name="todo_insert">ToDo</button>
+                    </div>
+                <?php } else {
+                    echo 'User Does not exists';
+                }
+                ?>
             </form>
         </div>
     </div>

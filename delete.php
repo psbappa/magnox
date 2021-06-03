@@ -24,6 +24,9 @@ if (isset($_GET['id'])) {
     // delete operation
     $stmt = $conn->prepare('DELETE FROM users WHERE id = ?');
     $stmt->execute([$_GET['id']]);
+
+    $stmt = $conn->prepare('DELETE FROM todo WHERE user_id = ?');
+    $stmt->execute([$_GET['id']]);
     $msg = 'You have deleted the contact!';
     header('Location: index.php');
 } else {

@@ -26,12 +26,14 @@
     <!-- ToDo Table -->
     <div class="container table-responsive py-5">
         <a class="btn btn-warning ladda-button" href="todo.php?id=<?php echo $user->id; ?>">ToDo</a>
+        
         <table class="table table-bordered table-hover">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
+                    <th scope="col">Added By</th>
                     <th scope="col">Phone</th>
                     <th colspan="2" style="text-align: center;">Action</th>
                 </tr>
@@ -42,6 +44,7 @@
                     <td><?php echo $key + 1; ?></td>
                     <td><?php echo $todo->name; ?></td>
                     <td><?php echo $todo->email; ?></td>
+                    <td><?php echo $_SESSION['user']->name; ?></td>
                     <td><?php echo $todo->phone; ?></td>
                     <td>
                         <a href="todo_update.php?id=<?php echo $todo->id; ?>" class="btn btn-primary edit_btn" data-toggle="modal">Edit</a>

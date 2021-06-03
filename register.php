@@ -24,20 +24,25 @@ if (isset($_POST['register'])) {
      // check phone
     if (empty($_POST['phone'])) {
         $errors['phone'] = 'phone should not be empty';
+    } 
+    if(strlen( $_POST['phone']) < 10){
+        $errors['phone'] = 'phone not contains any characters with minimum 10 digits';
     } else {
         $phone = htmlspecialchars($_POST['phone']);
     }
 
     // check password
-    if (empty($_POST['cpassword'])) {
-        $errors['cpassword'] = 'Password should not be empty';
+    if (empty($_POST['password'])) {
+        $errors['password'] = 'Password should not be empty';
+    } 
+    if(strlen( $_POST['password']) < 3) {
+        $errors['password'] = 'Password length min 3';
     } else {
         $password = htmlspecialchars($_POST['password']);
         $cpassword = htmlspecialchars($_POST['cpassword']);
         // check if asssword is equal to confirm password
         if ($password != $cpassword) {
             $errors['password'] = 'Passwords do not match. Please try again';
-            $errors['cpassword'] = 'Passwords do not match. Please try again';
         }
     }
 
@@ -186,6 +191,12 @@ if(isset($_SESSION['user'])){
         // Password
         if (password == null || password == "") {
             alert("Please enter the password.");
+            document.myForm.password.focus() ;
+            return false;
+        }
+
+        if (password.length < 3) {
+            alert("Please enter the miminum 3 character password.");
             document.myForm.password.focus() ;
             return false;
         }
