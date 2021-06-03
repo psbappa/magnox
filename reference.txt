@@ -1,0 +1,7 @@
+1. In this application, New User can register themselves.
+2. After registration, user can login in to their dashboard.
+3. logged user can see all the registered user list.
+4. User can make update and delete operation who has curenly logged in, user not able to update and delete to other users.
+5. Logged user can make a todo operation and only respective todo list can shown to respective logged in users.
+6. If User can delete them selves, then he is not able to create new todo and all the previous todo list can successfully deleted from the specified user todo listing.
+7. All the form is having with both client and server side validation.
